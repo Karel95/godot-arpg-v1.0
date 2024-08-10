@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdtfybi0ewi7p"]
+
+[ext_resource type="Texture2D" uid="uid://bmpfb0ltkpi4o" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Actor/Characters/NinjaMageOrange/SpriteSheet.png" id="1_cu06c"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(348, 243)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_cu06c")
+hframes = 4
+vframes = 7
