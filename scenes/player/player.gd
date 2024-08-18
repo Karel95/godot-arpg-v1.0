@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed:int = 50
+@export var speed:int = 100
 @onready var animations = $AnimationPlayer
 
 func handleInput():
@@ -25,4 +25,3 @@ func _physics_process(delta):
 	move_and_slide()
 	updateAnimation()
 	
-
