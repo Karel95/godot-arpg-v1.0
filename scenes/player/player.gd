@@ -12,12 +12,16 @@ func updateAnimation():
 	if velocity.length() == 0:
 		if animations.is_playing():
 			animations.stop()
-	else :
+	else:
 		var direction = "_down"
-		if velocity.x < 0: direction = "_left"
-		elif velocity.x > 0: direction = "_right"
-		elif velocity.y < 0: direction = "_up"
-		
+		var normalized_velocity = velocity.normalized()
+		if normalized_velocity.x < -0.8:
+			direction = "_left"
+		elif normalized_velocity.x > 0.8:
+			direction = "_right"
+		elif normalized_velocity.y < -0.8:
+			direction = "_up"
+			
 		animations.play("walk" + direction)
 
 func _physics_process(delta):
@@ -25,3 +29,8 @@ func _physics_process(delta):
 	move_and_slide()
 	updateAnimation()
 	
+
+
+func _on_hurt_box_area_2d_area_entered(area):
+	if area.name == "hitBox_Area2D":
+		print(area.get_parent().name)
