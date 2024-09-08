@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dncdh7aluxt81"]
+[gd_scene load_steps=12 format=3 uid="uid://dncdh7aluxt81"]
 
+[ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4m0lj"]
 [ext_resource type="Texture2D" uid="uid://cqo72gnj8q3y7" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_jjicj"]
 [ext_resource type="PackedScene" uid="uid://bdtfybi0ewi7p" path="res://scenes/player/player.tscn" id="1_r142t"]
 [ext_resource type="Texture2D" uid="uid://dxyskqxiuiv3" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="2_iy53b"]
 [ext_resource type="Texture2D" uid="uid://cbqhpb7xj5qqt" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="3_8fhtm"]
 [ext_resource type="PackedScene" uid="uid://biadcxpf4drrp" path="res://scenes/enemys/lizard.tscn" id="5_mobmw"]
+[ext_resource type="PackedScene" uid="uid://ctd2vph0pvtxk" path="res://scenes/gui/hearts_container.tscn" id="6_7nieo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx5gk"]
 texture = ExtResource("1_jjicj")
@@ -2613,6 +2615,7 @@ sources/1 = SubResource("TileSetAtlasSource_mjw6s")
 sources/4 = SubResource("TileSetAtlasSource_3rgew")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_4m0lj")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -2662,3 +2665,7 @@ endPoint = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="TileMap/lizard3"]
 position = Vector2(-77.3005, 77.5344)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeartsContainer_HBoxContainer" parent="CanvasLayer" instance=ExtResource("6_7nieo")]
