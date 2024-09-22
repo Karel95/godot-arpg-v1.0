@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlncfnpy5k6lf"]
+
+[ext_resource type="Texture2D" uid="uid://6phhup6m8ttb" path="res://assets/InventoryGUI - MakerTech/inventorySlot.png" id="1_re5m0"]
+
+[node name="SlotPanel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 20)
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10.0672, 10.0672)
+texture = ExtResource("1_re5m0")
+vframes = 2

@@ -1,12 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://dncdh7aluxt81"]
+[gd_scene load_steps=17 format=3 uid="uid://dncdh7aluxt81"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4m0lj"]
 [ext_resource type="Texture2D" uid="uid://cqo72gnj8q3y7" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_jjicj"]
 [ext_resource type="PackedScene" uid="uid://bdtfybi0ewi7p" path="res://scenes/player/player.tscn" id="1_r142t"]
 [ext_resource type="Texture2D" uid="uid://dxyskqxiuiv3" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetNature.png" id="2_iy53b"]
 [ext_resource type="Texture2D" uid="uid://cbqhpb7xj5qqt" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="3_8fhtm"]
+[ext_resource type="PackedScene" uid="uid://dpxki5aixmh18" path="res://scenes/collectables/life_pot.tscn" id="4_cj3d0"]
 [ext_resource type="PackedScene" uid="uid://biadcxpf4drrp" path="res://scenes/enemys/lizard.tscn" id="5_mobmw"]
+[ext_resource type="PackedScene" uid="uid://4p70we17ebnj" path="res://scenes/collectables/sword.tscn" id="5_o7jta"]
 [ext_resource type="PackedScene" uid="uid://ctd2vph0pvtxk" path="res://scenes/gui/hearts_container.tscn" id="6_7nieo"]
+[ext_resource type="Script" path="res://scenes/world/canvas-layer.gd" id="9_6keei"]
+[ext_resource type="PackedScene" uid="uid://b2u80hcwkb6xk" path="res://scenes/gui/inventory_gui.tscn" id="10_nvfkt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx5gk"]
 texture = ExtResource("1_jjicj")
@@ -2595,6 +2599,10 @@ texture = ExtResource("2_iy53b")
 2:12/0/physics_layer_0/angular_velocity = 0.0
 2:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.04334, -14.0537, 24.13, -14.0537, 24.13, 8.04334, -8, 8)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mfdkq"]
+scenes/1/scene = ExtResource("4_cj3d0")
+scenes/2/scene = ExtResource("5_o7jta")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3rgew"]
 texture = ExtResource("3_8fhtm")
 0:0/animation_frame_0/duration = 0.25
@@ -2613,6 +2621,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_bx5gk")
 sources/1 = SubResource("TileSetAtlasSource_mjw6s")
 sources/4 = SubResource("TileSetAtlasSource_3rgew")
+sources/2 = SubResource("TileSetScenesCollectionSource_mfdkq")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_4m0lj")
@@ -2631,6 +2640,8 @@ layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(1114138, 196609, 18, 1310751, 196609, 18, 1769498, 196609, 18, 1769493, 196609, 18, 1638415, 196609, 18, 1835018, 196609, 18, 131082, 196609, 18, 983077, 196609, 18, 196647, 196609, 18, 917512, 196609, 18, 1769474, 196609, 18, 1638440, 196609, 18, 655386, 196609, 18, 131092, 196609, 18, 393267, 196609, 18, 786491, 196609, 18, 393291, 196609, 18, 1048651, 196609, 18, 1114187, 196609, 18, 1703993, 196609, 18, 1769528, 196609, 18, 1245233, 196609, 18, 1441867, 196609, 18, 852050, 196609, 18, 589910, 196609, 18, 1507415, 196609, 18, 524376, 196609, 18, 458838, 196609, 18, 458837, 196609, 18, 524372, 196609, 18, 589908, 196609, 18, 655444, 196609, 18, 655445, 196609, 18, 589909, 196609, 18, 720983, 196609, 18, 786519, 196609, 18, 786518, 196609, 18, 852054, 196609, 18, 852053, 196609, 18, 852052, 196609, 18, 852051, 196609, 18, 786515, 196609, 18, 1114185, 196609, 18, 1179721, 196609, 18, 1245257, 196609, 18, 1245256, 196609, 18, 1310792, 196609, 18, 1376328, 196609, 18, 1376329, 196609, 18, 1441865, 196609, 18, 1441866, 196609, 18, 1507402, 196609, 18, 1179722, 196609, 18, 1638487, 196609, 18, 1638486, 196609, 18, 1572950, 196609, 18, 1572949, 196609, 18, 1572948, 196609, 18, 1638483, 196609, 18, 1638482, 196609, 18, 1704017, 196609, 18, 1704016, 196609, 18, 1507410, 196609, 18, 1441874, 196609, 18, 1441875, 196609, 18, 1376340, 196609, 18, 1376341, 196609, 18, 1376342, 196609, 18, 327753, 196609, 18, 393289, 196609, 18, 458825, 196609, 18, 458824, 196609, 18, 458823, 196609, 18, 393286, 196609, 18, 327750, 196609, 18, 524354, 196609, 18, 524353, 196609, 18, 524352, 196609, 18, 589887, 196609, 18, 589886, 196609, 18, 589885, 196609, 18, 589884, 196609, 18, 589883, 196609, 18, 589882, 196609, 18, 720955, 196609, 18, 720954, 196609, 18, 786489, 196609, 18, 393268, 196609, 18, 327732, 196609, 18, 262196, 196609, 18, 262195, 196609, 18, 327730, 196609, 18, 393266, 196609, 18, 1507378, 196609, 18, 1769521, 196609, 18, 1179707, 196609, 18, 1114172, 196609, 18, 1114173, 196609, 18, 1572928, 196609, 18, 196690, 196609, 18, 1769540, 196609, 18, 720943, 196609, 18)
 layer_3/name = "rocks"
 layer_3/tile_data = PackedInt32Array(65536, 1, 12, 65537, 1, 12, 65538, 1, 12, 65539, 1, 12, 65540, 1, 12, 65541, 1, 12, 65542, 1, 12, 65543, 1, 12, 65544, 1, 12, 65545, 1, 12, 65546, 1, 12, 65547, 1, 12, 65548, 1, 12, 65549, 1, 12, 65550, 1, 12, 65551, 1, 12, 65552, 1, 12, 65553, 1, 12, 65554, 1, 12, 65555, 1, 12, 65556, 1, 12, 65557, 1, 12, 65558, 1, 12, 65559, 1, 12, 65560, 1, 12, 65561, 1, 12, 65562, 1, 12, 65563, 1, 12, 65564, 1, 12, 65565, 1, 12, 65566, 1, 12, 65567, 1, 12, 65568, 1, 12, 65569, 1, 12, 65570, 1, 12, 65571, 1, 12, 65572, 1, 12, 65573, 1, 12, 65574, 1, 12, 65575, 1, 12, 65576, 1, 12, 65577, 1, 12, 65578, 1, 12, 65579, 1, 12, 131072, 1, 12, 196608, 1, 12, 262144, 1, 12, 327680, 1, 12, 393216, 1, 12, 458752, 1, 12, 524288, 1, 12, 589824, 1, 12, 655360, 1, 12, 720896, 1, 12, 786432, 1, 12, 851968, 1, 12, 917504, 1, 12, 983040, 1, 12, 1048576, 1, 12, 1114112, 1, 12, 1179648, 1, 12, 1245184, 1, 12, 1310720, 1, 12, 1376256, 1, 12, 1441792, 1, 12, 1507328, 1, 12, 1572864, 1, 12, 1638400, 1, 12, 1703936, 1, 12, 1769472, 1, 12, 1835008, 1, 12, 1900544, 1, 12)
+layer_4/name = "collectables"
+layer_4/tile_data = PackedInt32Array(983069, 2, 65536, 983071, 2, 65536, 983072, 2, 65536, 917535, 2, 65536, 917536, 2, 65536, 983068, 2, 65536, 983067, 2, 65536, 983053, 2, 65536, 983052, 2, 65536, 917516, 2, 65536, 917517, 2, 65536, 1179658, 2, 65536, 1245194, 2, 65536, 1310730, 2, 65536, 196633, 2, 65536, 196634, 2, 65536, 262170, 2, 65536, 262169, 2, 65536, 327701, 2, 65536, 327702, 2, 65536, 327703, 2, 65536, 786455, 2, 131072)
 
 [node name="Player" parent="TileMap" instance=ExtResource("1_r142t")]
 
@@ -2667,5 +2678,13 @@ endPoint = NodePath("Marker2D")
 position = Vector2(-77.3005, 77.5344)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("9_6keei")
 
 [node name="HeartsContainer_HBoxContainer" parent="CanvasLayer" instance=ExtResource("6_7nieo")]
+
+[node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("10_nvfkt")]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = -6.0
+offset_bottom = -6.0
