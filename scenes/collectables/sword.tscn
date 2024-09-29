@@ -1,12 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://4p70we17ebnj"]
+[gd_scene load_steps=9 format=3 uid="uid://4p70we17ebnj"]
 
 [ext_resource type="PackedScene" uid="uid://cm7qs545cl2qb" path="res://scenes/collectables/collectable.tscn" id="1_1qthh"]
 [ext_resource type="Texture2D" uid="uid://bfg7k17mxxmdp" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Items/Weapons/Sword2/Sprite.png" id="2_1mxsl"]
 [ext_resource type="Script" path="res://scenes/collectables/sword.gd" id="2_j8nk3"]
+[ext_resource type="Resource" uid="uid://cl55moo30d6cs" path="res://inventory/items/sword.tres" id="3_d5nwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgwlk"]
 resource_local_to_scene = true
 size = Vector2(4, 14)
+
+[sub_resource type="Animation" id="Animation_og3pp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_5qgxi"]
 resource_name = "collect"
@@ -36,33 +64,6 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(2, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_og3pp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xikso"]
 _data = {
 "RESET": SubResource("Animation_og3pp"),
@@ -71,6 +72,7 @@ _data = {
 
 [node name="Sword" instance=ExtResource("1_1qthh")]
 script = ExtResource("2_j8nk3")
+itemRes = ExtResource("3_d5nwu")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_kgwlk")

@@ -13,6 +13,8 @@ signal healthChanged
 
 @onready var hurtBox = $hurtBox_Area2D
 
+@export var inventory: Inventory
+
 var isHurt:bool = false
 
 func _ready():
@@ -60,7 +62,7 @@ func hurtByEnemy(area):
 
 func _on_hurt_box_area_2d_area_entered(area):
 	if area.has_method('collect'):
-		area.collect()
+		area.collect(inventory)
 	
 
 func knockback(enemyVelocity:Vector2):
