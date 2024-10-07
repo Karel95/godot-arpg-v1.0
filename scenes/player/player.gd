@@ -15,7 +15,11 @@ signal healthChanged
 
 @export var inventory: Inventory
 
+@onready var weapon = $weapon
+
 var isHurt:bool = false
+var lastAnimDirection:String = "_down"
+var isAttacking:bool = false
 
 func _ready():
 	effects.play("RESET")
@@ -24,22 +28,43 @@ func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
 	
+	if Input.is_action_just_pressed("attack"):
+		animations.play("attack" + lastAnimDirection)
+		isAttacking = true
+		weapon.enable()
+		await animations.animation_finished
+		isAttacking = false
+		weapon.disable()
+		animations.play("attack_reset")
 
 func updateAnimation():
+	# Si el personaje está atacando, no reproducir animaciones de movimiento
+	if isAttacking:
+		if not animations.is_playing():
+			# Cuando termina la animación de ataque, restablece el estado
+			isAttacking = false
+		return  # Sale de la función si está atacando
 	if velocity.length() == 0:
 		if animations.is_playing():
 			animations.stop()
 	else:
-		var direction = "_down"
+		var direction = ""
 		var normalized_velocity = velocity.normalized()
-		if normalized_velocity.x < -0.8:
-			direction = "_left"
-		elif normalized_velocity.x > 0.8:
-			direction = "_right"
-		elif normalized_velocity.y < -0.8:
-			direction = "_up"
-			
-		animations.play("walk" + direction)
+		if abs(normalized_velocity.y) > abs(normalized_velocity.x):
+			if normalized_velocity.y < -0.8:
+				direction = "_up"
+			elif normalized_velocity.y > 0.8:
+				direction = "_down"
+		else:
+			if normalized_velocity.x < -0.8:
+				direction = "_left"
+			elif normalized_velocity.x > 0.8:
+				direction = "_right"
+		if direction != "":
+			animations.play("walk" + direction)
+		lastAnimDirection = direction
+
+
 
 func _physics_process(delta):
 	handleInput()

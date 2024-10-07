@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmkackr71madb"]
+
+[ext_resource type="Texture2D" uid="uid://xfjrffjlfg3a" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Items/Weapons/Sword2/SpriteInHand.png" id="1_qqmih"]
+[ext_resource type="Script" path="res://scenes/player/sword.gd" id="1_vvosr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsi6a"]
+size = Vector2(4.00708, 11.2199)
+
+[node name="sword" type="Area2D"]
+scale = Vector2(2, 2)
+collision_layer = 128
+collision_mask = 16
+script = ExtResource("1_vvosr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6.5, 0)
+rotation = 4.71239
+texture = ExtResource("1_qqmih")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(8.5, 0)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_bsi6a")

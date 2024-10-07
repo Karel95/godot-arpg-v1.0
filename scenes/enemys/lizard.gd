@@ -6,13 +6,14 @@ extends CharacterBody2D
 
 @onready var animations = $AnimatedSprite2D
 
+var isDying = false  # Variable para controlar el estado de muerte
 var startPosition
 var endPosition
 
 func _ready():
 	startPosition = position
 	endPosition = endPoint.global_position
-	
+
 
 func changeDirection():
 	var tempEnd = endPosition
@@ -29,6 +30,9 @@ func updateVelocity():
 	
 
 func updateAnimations():
+	# Si el personaje está muriendo, no reproducir ninguna animación de movimiento
+	if isDying:
+		return  # Sale de la función si el personaje está muriendo
 	if velocity.length() == 0:
 		if animations.is_playing():
 			animations.stop()
@@ -44,6 +48,7 @@ func updateAnimations():
 			
 		animations.play("walk" + direction)
 
+
 func handleCollision():
 	pass
 
@@ -53,3 +58,12 @@ func _physics_process(delta):
 	updateAnimations()
 	handleCollision()
 	
+
+func _on_hurt_box_area_2d_area_entered(area):
+	# Verifica si el área que entró pertenece al grupo 'weapon'
+	if area.is_in_group("weapon"):
+		$hitBox_Area2D.set_deferred("monitorable", false)
+		isDying = true
+		animations.play("death")
+		await animations.animation_finished
+		queue_free()
