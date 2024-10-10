@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/gui/inventory_gui.gd" id="1_k5wrh"]
 [ext_resource type="Texture2D" uid="uid://cv66gv7cfciam" path="res://assets/InventoryGUI - MakerTech/InventoryRect.png" id="1_xt73n"]
-[ext_resource type="PackedScene" uid="uid://dlncfnpy5k6lf" path="res://scenes/gui/slot_panel.tscn" id="2_ka6t6"]
+[ext_resource type="PackedScene" uid="uid://dlncfnpy5k6lf" path="res://scenes/gui/slot_button.tscn" id="2_ka6t6"]
 
 [node name="InventoryGUI" type="Control"]
 layout_mode = 3
