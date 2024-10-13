@@ -21,6 +21,8 @@ func insert(items: ItemsPanel):
 func takeItem():
 	var item = itemsPanel
 	
+	inventory.removeSlot(itemsPanel.inventorySlot)
+	
 	container.remove_child(itemsPanel)
 	itemsPanel = null
 	backgroundSprite.frame = 0

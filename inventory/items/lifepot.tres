@@ -7,3 +7,4 @@
 script = ExtResource("1_php3u")
 name = "lifepot"
 texture = ExtResource("2_8ofoc")
+maxAmountPerStack = 10
