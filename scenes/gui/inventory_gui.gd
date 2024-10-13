@@ -25,7 +25,7 @@ func update():
 			slots[i].insert(itemsPanel)
 			
 		itemsPanel.inventorySlot = inventorySlot
-		#itemsPanel.update()
+		itemsPanel.update(inventorySlot)
 
 func open():
 	visible = true
