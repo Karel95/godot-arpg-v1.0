@@ -4,7 +4,8 @@ var isOpen:bool = false
 
 @onready var inventory: Inventory = preload("res://inventory/playerInventory.tres")
 @onready var itemsPanelClass = preload("res://scenes/gui/items_panel.tscn")
-@onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+@onready var hotbar_slots: Array = $NinePatchRect/HBoxContainer.get_children()
+@onready var slots: Array = hotbar_slots + $NinePatchRect/GridContainer.get_children()
 
 var itemInHand: ItemsPanel
 

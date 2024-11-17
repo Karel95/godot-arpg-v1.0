@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dncdh7aluxt81"]
+[gd_scene load_steps=18 format=3 uid="uid://dncdh7aluxt81"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4m0lj"]
 [ext_resource type="Texture2D" uid="uid://cqo72gnj8q3y7" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_jjicj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ctd2vph0pvtxk" path="res://scenes/gui/hearts_container.tscn" id="6_7nieo"]
 [ext_resource type="Script" path="res://scenes/world/canvas-layer.gd" id="9_6keei"]
 [ext_resource type="PackedScene" uid="uid://b2u80hcwkb6xk" path="res://scenes/gui/inventory_gui.tscn" id="10_nvfkt"]
+[ext_resource type="PackedScene" uid="uid://v6m34fikmty0" path="res://scenes/gui/hotbar.tscn" id="12_tyv5i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx5gk"]
 texture = ExtResource("1_jjicj")
@@ -2688,3 +2689,16 @@ offset_left = -6.0
 offset_top = -6.0
 offset_right = -6.0
 offset_bottom = -6.0
+
+[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("12_tyv5i")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -30.0
+offset_right = 46.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
