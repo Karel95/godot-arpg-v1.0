@@ -342,6 +342,7 @@ _data = {
 z_index = 1
 y_sort_enabled = true
 position = Vector2(232, 150)
+collision_layer = 5
 script = ExtResource("1_fgdhi")
 inventory = ExtResource("2_tunhd")
 

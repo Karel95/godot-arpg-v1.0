@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dncdh7aluxt81"]
+[gd_scene load_steps=24 format=3 uid="uid://dncdh7aluxt81"]
 
 [ext_resource type="Script" path="res://scenes/world/world.gd" id="1_4m0lj"]
 [ext_resource type="Texture2D" uid="uid://cqo72gnj8q3y7" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_jjicj"]
@@ -9,9 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://biadcxpf4drrp" path="res://scenes/enemys/lizard.tscn" id="5_mobmw"]
 [ext_resource type="PackedScene" uid="uid://4p70we17ebnj" path="res://scenes/collectables/sword.tscn" id="5_o7jta"]
 [ext_resource type="PackedScene" uid="uid://ctd2vph0pvtxk" path="res://scenes/gui/hearts_container.tscn" id="6_7nieo"]
+[ext_resource type="Texture2D" uid="uid://dhfkfgfe8ewbu" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetHouse.png" id="7_5wc1y"]
 [ext_resource type="Script" path="res://scenes/world/canvas-layer.gd" id="9_6keei"]
 [ext_resource type="PackedScene" uid="uid://b2u80hcwkb6xk" path="res://scenes/gui/inventory_gui.tscn" id="10_nvfkt"]
 [ext_resource type="PackedScene" uid="uid://v6m34fikmty0" path="res://scenes/gui/hotbar.tscn" id="12_tyv5i"]
+[ext_resource type="PackedScene" uid="uid://bmmvwofr4bnm" path="res://scenes/world/scene_trigger.tscn" id="14_7vuf2"]
+[ext_resource type="Script" path="res://scenes/world/follow_cam.gd" id="15_4n4v8"]
+[ext_resource type="PackedScene" uid="uid://bixs6fjyf3g7t" path="res://scenes/world/entrance_marker.tscn" id="16_fsv57"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bx5gk"]
 texture = ExtResource("1_jjicj")
@@ -2614,6 +2618,29 @@ texture = ExtResource("3_8fhtm")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ak5wl"]
+texture = ExtResource("7_5wc1y")
+0:0/size_in_atlas = Vector2i(4, 3)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.6985, 6.36396, -29.6985, 6.36396, -29.6985, 18.3848, -25.2791, 23.5113, -23.6881, 23.4229, -23.6881, 8.22012, 8, 8, 7.95495, 23.4229, 25.2791, 23.3345, 29.3449, 18.208, 29.5217, 6.18719)
+4:0/size_in_atlas = Vector2i(4, 3)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-30.4056, 18.4732, -30.5824, 5.56847, 28.461, 5.56847, 28.461, 18.4732, 24.0416, 23.5997, 8.3085, 23.5997, 8, 8, -22.981, 8.04334, -22.8042, 23.4229, -26.5165, 23.5997)
+8:0/size_in_atlas = Vector2i(4, 3)
+8:0/0 = 0
+8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:0/0/physics_layer_0/angular_velocity = 0.0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.6985, 6.62912, 29.3449, 6.45235, 29.3449, 18.4732, 25.2791, 23.5997, 8.3085, 23.4229, 8, 8, -21.39, 8.92722, -21.7435, 23.2461, -25.1023, 23.2461, -29.6985, 18.2964)
+12:0/size_in_atlas = Vector2i(4, 3)
+12:0/0 = 0
+12:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+12:0/0/physics_layer_0/angular_velocity = 0.0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.5217, 8.39689, -29.5217, 18.6499, -25.4558, 23.4229, -22.4506, 23.2461, -22.4506, 9.45755, 7.95495, 9.45755, 7.77818, 23.5997, 25.2791, 23.7765, 29.3449, 18.1196, 29.5217, 8.39689)
+
 [sub_resource type="TileSet" id="TileSet_p2e0p"]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 1
@@ -2623,8 +2650,13 @@ sources/0 = SubResource("TileSetAtlasSource_bx5gk")
 sources/1 = SubResource("TileSetAtlasSource_mjw6s")
 sources/4 = SubResource("TileSetAtlasSource_3rgew")
 sources/2 = SubResource("TileSetScenesCollectionSource_mfdkq")
+sources/7 = SubResource("TileSetAtlasSource_ak5wl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arvpw"]
+size = Vector2(20, 1.55299)
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_4m0lj")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2643,16 +2675,10 @@ layer_3/name = "rocks"
 layer_3/tile_data = PackedInt32Array(65536, 1, 12, 65537, 1, 12, 65538, 1, 12, 65539, 1, 12, 65540, 1, 12, 65541, 1, 12, 65542, 1, 12, 65543, 1, 12, 65544, 1, 12, 65545, 1, 12, 65546, 1, 12, 65547, 1, 12, 65548, 1, 12, 65549, 1, 12, 65550, 1, 12, 65551, 1, 12, 65552, 1, 12, 65553, 1, 12, 65554, 1, 12, 65555, 1, 12, 65556, 1, 12, 65557, 1, 12, 65558, 1, 12, 65559, 1, 12, 65560, 1, 12, 65561, 1, 12, 65562, 1, 12, 65563, 1, 12, 65564, 1, 12, 65565, 1, 12, 65566, 1, 12, 65567, 1, 12, 65568, 1, 12, 65569, 1, 12, 65570, 1, 12, 65571, 1, 12, 65572, 1, 12, 65573, 1, 12, 65574, 1, 12, 65575, 1, 12, 65576, 1, 12, 65577, 1, 12, 65578, 1, 12, 65579, 1, 12, 131072, 1, 12, 196608, 1, 12, 262144, 1, 12, 327680, 1, 12, 393216, 1, 12, 458752, 1, 12, 524288, 1, 12, 589824, 1, 12, 655360, 1, 12, 720896, 1, 12, 786432, 1, 12, 851968, 1, 12, 917504, 1, 12, 983040, 1, 12, 1048576, 1, 12, 1114112, 1, 12, 1179648, 1, 12, 1245184, 1, 12, 1310720, 1, 12, 1376256, 1, 12, 1441792, 1, 12, 1507328, 1, 12, 1572864, 1, 12, 1638400, 1, 12, 1703936, 1, 12, 1769472, 1, 12, 1835008, 1, 12, 1900544, 1, 12)
 layer_4/name = "collectables"
 layer_4/tile_data = PackedInt32Array(983069, 2, 65536, 983071, 2, 65536, 983072, 2, 65536, 917535, 2, 65536, 917536, 2, 65536, 983068, 2, 65536, 983067, 2, 65536, 983053, 2, 65536, 983052, 2, 65536, 917516, 2, 65536, 917517, 2, 65536, 1179658, 2, 65536, 1245194, 2, 65536, 1310730, 2, 65536, 196633, 2, 65536, 196634, 2, 65536, 262170, 2, 65536, 262169, 2, 65536, 327701, 2, 65536, 327702, 2, 65536, 327703, 2, 65536, 786455, 2, 131072)
-
-[node name="Player" parent="TileMap" instance=ExtResource("1_r142t")]
-
-[node name="Camera2D" type="Camera2D" parent="TileMap/Player"]
-limit_left = 0
-limit_top = 0
-limit_right = 1500
-limit_bottom = 1000
-limit_smoothed = true
-position_smoothing_enabled = true
+layer_5/name = "buildings"
+layer_5/y_sort_enabled = true
+layer_5/z_index = 1
+layer_5/tile_data = PackedInt32Array(131119, 7, 0, 196697, 262151, 0, 1507375, 786439, 0, 1769562, 524295, 0)
 
 [node name="lizard" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("5_mobmw")]
 position = Vector2(312.29, 290.533)
@@ -2702,3 +2728,27 @@ offset_right = 46.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="SceneTrigger" parent="." instance=ExtResource("14_7vuf2")]
+position = Vector2(751.976, 50.8667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
+z_index = 1
+position = Vector2(0.0331421, -0.030674)
+shape = SubResource("RectangleShape2D_arvpw")
+
+[node name="Player" parent="." instance=ExtResource("1_r142t")]
+
+[node name="follow_cam" type="Camera2D" parent="." node_paths=PackedStringArray("follow_node")]
+position = Vector2(232, 150)
+limit_left = 0
+limit_top = 0
+limit_right = 1500
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("15_4n4v8")
+follow_node = NodePath("../Player")
+
+[node name="EntranceMarker" parent="." instance=ExtResource("16_fsv57")]
+position = Vector2(752.433, 68.999)
