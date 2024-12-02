@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://jgy0q1ynhpjj"]
+[gd_resource type="Resource" script_class="HealthItem" load_steps=3 format=3 uid="uid://jgy0q1ynhpjj"]
 
-[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_php3u"]
+[ext_resource type="Script" path="res://inventory/items/health_item.gd" id="1_mfu22"]
 [ext_resource type="Texture2D" uid="uid://blr4rqwwaw5as" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Items/Potion/LifePot.png" id="2_8ofoc"]
 
 [resource]
-script = ExtResource("1_php3u")
+script = ExtResource("1_mfu22")
+health_increase = 1
 name = "lifepot"
 texture = ExtResource("2_8ofoc")
 maxAmountPerStack = 10

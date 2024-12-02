@@ -22,6 +22,7 @@ var lastAnimDirection:String = "_down"
 var isAttacking:bool = false
 
 func _ready():
+	inventory.use_item.connect(use_item)
 	effects.play("RESET")
 	weapon.disable()
 
@@ -100,6 +101,12 @@ func _on_effects_animation_player_animation_finished(anim_name):
 	effects.play("RESET")
 	isHurt = false
 
-func _on_hurt_box_area_2d_area_exited(area):
-	pass
+func increase_health(amount: int):
+	currentHealth += amount
+	currentHealth = min(maxHealth, currentHealth)
 	
+	healthChanged.emit(currentHealth)
+	
+
+func use_item(item: InventoryItem):
+	item.use(self)

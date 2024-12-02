@@ -1,21 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://v6m34fikmty0"]
+[gd_scene load_steps=4 format=3 uid="uid://v6m34fikmty0"]
 
 [ext_resource type="PackedScene" uid="uid://dx6u17m56x2oo" path="res://scenes/gui/hotbar_slot.tscn" id="1_ghi0c"]
 [ext_resource type="Script" path="res://scenes/gui/hotbar.gd" id="1_iksyb"]
+[ext_resource type="Texture2D" uid="uid://b8idxmb7tf7di" path="res://assets/InventoryGUI - MakerTech/hotbar_selector.png" id="3_7qcha"]
 
-[node name="Hotbar" type="HBoxContainer"]
-offset_right = 92.0
+[node name="Hotbar" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 4.0
+offset_right = 96.0
 offset_bottom = 20.0
 script = ExtResource("1_iksyb")
 
-[node name="HotbarSlot" parent="." instance=ExtResource("1_ghi0c")]
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 92.0
+offset_bottom = 20.0
+
+[node name="HotbarSlot" parent="Container" instance=ExtResource("1_ghi0c")]
 layout_mode = 2
 
-[node name="HotbarSlot2" parent="." instance=ExtResource("1_ghi0c")]
+[node name="HotbarSlot2" parent="Container" instance=ExtResource("1_ghi0c")]
 layout_mode = 2
 
-[node name="HotbarSlot3" parent="." instance=ExtResource("1_ghi0c")]
+[node name="HotbarSlot3" parent="Container" instance=ExtResource("1_ghi0c")]
 layout_mode = 2
 
-[node name="HotbarSlot4" parent="." instance=ExtResource("1_ghi0c")]
+[node name="HotbarSlot4" parent="Container" instance=ExtResource("1_ghi0c")]
 layout_mode = 2
+
+[node name="Selector" type="Sprite2D" parent="."]
+texture = ExtResource("3_7qcha")
+centered = false

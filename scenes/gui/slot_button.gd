@@ -23,14 +23,17 @@ func takeItem():
 	
 	inventory.removeSlot(itemsPanel.inventorySlot)
 	
-	container.remove_child(itemsPanel)
-	itemsPanel = null
-	backgroundSprite.frame = 0
-	
 	return item
+	
 
 func isEmpty():
 	return !itemsPanel
 
-
+func clear() -> void:
+	if itemsPanel:
+		container.remove_child(itemsPanel)
+		itemsPanel = null
+		
+	backgroundSprite.frame = 0
+	
 

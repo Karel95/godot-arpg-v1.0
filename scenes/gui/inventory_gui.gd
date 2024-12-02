@@ -22,7 +22,11 @@ func _ready():
 func update():
 	for i in range(min(inventory.slots.size(), slots.size())):
 		var inventorySlot: InventorySlot = inventory.slots[i]
-		if !inventorySlot.item: continue
+		
+		if !inventorySlot.item:
+			slots[i].clear()
+			continue
+			
 		
 		var itemsPanel: ItemsPanel = slots[i].itemsPanel
 		if !itemsPanel:
