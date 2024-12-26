@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cl55moo30d6cs"]
+[gd_resource type="Resource" script_class="WeaponItem" load_steps=4 format=3 uid="uid://cl55moo30d6cs"]
 
-[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_ie8e2"]
+[ext_resource type="Script" path="res://inventory/items/weapon_item.gd" id="1_xt5rp"]
 [ext_resource type="Texture2D" uid="uid://bfg7k17mxxmdp" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Items/Weapons/Sword2/Sprite.png" id="2_horli"]
+[ext_resource type="PackedScene" uid="uid://dmkackr71madb" path="res://scenes/player/sword.tscn" id="3_n8nhi"]
 
 [resource]
-script = ExtResource("1_ie8e2")
+script = ExtResource("1_xt5rp")
+weapon_class = ExtResource("3_n8nhi")
 name = "sword"
 texture = ExtResource("2_horli")
+maxAmountPerStack = 10
+consumable = false

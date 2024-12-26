@@ -1,9 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bdtfybi0ewi7p"]
+[gd_scene load_steps=21 format=3 uid="uid://bdtfybi0ewi7p"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fgdhi"]
 [ext_resource type="Texture2D" uid="uid://bbrqlxlmjrls0" path="res://assets/Ninja Adventure - Asset Pack/Ninja Adventure - Asset Pack/Actor/Characters/SamuraiBlue/SpriteSheet.png" id="1_mgdjf"]
 [ext_resource type="Resource" uid="uid://dww8ngnyqeg2u" path="res://inventory/playerInventory.tres" id="2_tunhd"]
-[ext_resource type="PackedScene" uid="uid://dmkackr71madb" path="res://scenes/player/sword.tscn" id="4_0mft7"]
 [ext_resource type="Script" path="res://scenes/player/weapon.gd" id="4_5dgkr"]
 
 [sub_resource type="Animation" id="Animation_lu8my"]
@@ -389,8 +388,6 @@ visible = false
 position = Vector2(-6, 12)
 script = ExtResource("4_5dgkr")
 metadata/_edit_group_ = true
-
-[node name="sword" parent="weapon" groups=["weapon"] instance=ExtResource("4_0mft7")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="hurtBox_Area2D" to="." method="_on_hurt_box_area_2d_area_entered"]
